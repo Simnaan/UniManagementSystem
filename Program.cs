@@ -106,7 +106,7 @@ namespace UniManagementSystem
             string NameOfStudent = Console.ReadLine();
             //displays the name of all the students currently stored
             Console.WriteLine("\nWhat would you like to update for " + NameOfStudent + "? \nPlease choose one of the following: ");
-            Console.WriteLine("Name\nMajor\nSubject\nGrade\nAttendance");
+            Console.WriteLine("Name\nMajor\nGrade\nAttendance");
             string DataToUpdate = Console.ReadLine();
 
 
@@ -135,6 +135,32 @@ namespace UniManagementSystem
                         }
                     }
                     break;
+
+                case "grade":
+                    Console.WriteLine("Please enter the name of the subject that you want to update the grade for.");
+                    string SubjectName = Console.ReadLine();
+                    Console.WriteLine("Please enter the new grade");
+                    int NewScore = Convert.ToInt32(Console.ReadLine());
+
+                    for (int i = 0; i < StudentsObject.students.Length; i++)
+                    {
+                        if (StudentsObject.students[i].name == NameOfStudent)
+                        {
+                            for (int x = 0; x < StudentsObject.students[i].grades.subjects.Length; x++)
+                            {
+                                if (StudentsObject.students[i].grades.subjects[x].name == SubjectName)
+                                {
+                                    StudentsObject.students[i].grades.subjects[x].score = NewScore;
+                                    Console.WriteLine("New score is: " + StudentsObject.students[i].grades.subjects[x].score);
+                                }
+                            }
+                        }
+                    }
+
+                    break;
+
+                case "attendance":
+                    break;
             }
         }
 
@@ -152,7 +178,7 @@ namespace UniManagementSystem
                 {
                     if (StudentsObject.students[i].grades.subjects[x].name == Subject)
                     {
-                        Console.WriteLine("Student name: "+StudentsObject.students[i].name);
+                        Console.WriteLine("\nStudent name: "+StudentsObject.students[i].name);
                         Console.WriteLine("Score: " + StudentsObject.students[i].grades.subjects[x].score);
                         Console.WriteLine("Attendance: " + StudentsObject.students[i].attendance.subjects[x].score);
                     }
