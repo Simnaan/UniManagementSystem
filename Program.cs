@@ -29,7 +29,7 @@ namespace UniManagementSystem
                     break;
 
                 case 3:
-                    //ViewSubjectScores();
+                    ViewSubjectScores();
                     break;
             }
         }
@@ -59,10 +59,10 @@ namespace UniManagementSystem
                 //displays the name of all the students currently stored
                 string NameOfStudent = Console.ReadLine();
 
-                    for (int i = 0; i < StudentsObject.students.Length; i++)
+                for (int i = 0; i < StudentsObject.students.Length; i++)
+                {
+                    if (NameOfStudent == StudentsObject.students[i].name)
                     {
-                        if (NameOfStudent == StudentsObject.students[i].name)
-                        {
                         Console.WriteLine("\nHere is the record for " + StudentsObject.students[i].name + ".");
                         Console.WriteLine("University: " + StudentsObject.students[i].university);
                         Console.WriteLine("Major: " + StudentsObject.students[i].major);
@@ -75,7 +75,7 @@ namespace UniManagementSystem
                         Console.WriteLine("Subject 2: " + StudentsObject.students[i].grades.subjects[1].name);
                         Console.WriteLine("Score: " + StudentsObject.students[i].grades.subjects[1].score);
                         Console.WriteLine("Attendance: " + StudentsObject.students[i].attendance.subjects[1].score);
-                        
+
                         Console.WriteLine("Subject 3: " + StudentsObject.students[i].grades.subjects[2].name);
                         Console.WriteLine("Score: " + StudentsObject.students[i].grades.subjects[2].score);
                         Console.WriteLine("Attendance: " + StudentsObject.students[i].attendance.subjects[2].score);
@@ -88,12 +88,12 @@ namespace UniManagementSystem
                         Console.WriteLine("Score: " + StudentsObject.students[i].grades.subjects[4].score);
                         Console.WriteLine("Attendance: " + StudentsObject.students[i].attendance.subjects[4].score);
 
-                        
-                        count--;
-                        }
-                    }
 
+                        count--;
+                    }
                 }
+
+            }
         }
 
         private static void EditStudentData()
@@ -105,7 +105,7 @@ namespace UniManagementSystem
             }
             string NameOfStudent = Console.ReadLine();
             //displays the name of all the students currently stored
-            Console.WriteLine("\nWhat would you like to update for "+ NameOfStudent+"? \nPlease choose one of the following: ");
+            Console.WriteLine("\nWhat would you like to update for " + NameOfStudent + "? \nPlease choose one of the following: ");
             Console.WriteLine("Name\nMajor\nSubject\nGrade\nAttendance");
             string DataToUpdate = Console.ReadLine();
 
@@ -135,6 +135,28 @@ namespace UniManagementSystem
                         }
                     }
                     break;
+            }
+        }
+
+        private static void ViewSubjectScores()
+        {
+            Console.WriteLine("\nPlease pick from one of the following subjects: \nmathematics\ncomputer_science\nphysics\nenglish\nhistory\nbiology\nchemistry\neconomics");
+            string Subject = Console.ReadLine();
+
+            Console.WriteLine("Here are the scores and attendance for the students studying "+Subject);
+
+            for (int i = 0;i<StudentsObject.students.Length; i++)
+            {
+                for (int x = 0; x < StudentsObject.students[i].grades.subjects.Length;x++)
+                //this for loop is used to find students who study the subject the user has asked for
+                {
+                    if (StudentsObject.students[i].grades.subjects[x].name == Subject)
+                    {
+                        Console.WriteLine("Student name: "+StudentsObject.students[i].name);
+                        Console.WriteLine("Score: " + StudentsObject.students[i].grades.subjects[x].score);
+                        Console.WriteLine("Attendance: " + StudentsObject.students[i].attendance.subjects[x].score);
+                    }
+                }
             }
         }
     }
