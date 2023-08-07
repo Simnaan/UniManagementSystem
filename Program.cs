@@ -14,12 +14,22 @@ namespace UniManagementSystem
 
             Console.WriteLine("Welcome to the University Management System");
             Console.WriteLine("If you would like to view Student records, please type 1");
+            Console.WriteLine("If you would like to update a students record, please type 2");
+            Console.WriteLine("If you would like to review scores and attendance for a subject, please type 3");
             int Option = Convert.ToInt32(Console.ReadLine());
 
             switch (Option)
             {
                 case 1:
                     ViewStudentRecord();
+                    break;
+
+                case 2:
+                    EditStudentData();
+                    break;
+
+                case 3:
+                    //ViewSubjectScores();
                     break;
             }
         }
@@ -46,7 +56,7 @@ namespace UniManagementSystem
                 {
                     Console.WriteLine(StudentsObject.students[i].name);
                 }
-
+                //displays the name of all the students currently stored
                 string NameOfStudent = Console.ReadLine();
 
                     for (int i = 0; i < StudentsObject.students.Length; i++)
@@ -84,6 +94,19 @@ namespace UniManagementSystem
                     }
 
                 }
+        }
+
+        private static void EditStudentData()
+        {
+            Console.WriteLine("\nWhich of the following student's data would you like to update?");
+            for (int i = 0; i < StudentsObject.students.Length; i++)
+            {
+                Console.WriteLine(StudentsObject.students[i].name);
+            }
+            string NameOfStudent = Console.ReadLine();
+            //displays the name of all the students currently stored
+            Console.WriteLine("\nWhat would you like to update for "+ NameOfStudent+"? \nPlease choose one of the following: ");
+            Console.WriteLine("Name\nUniversity\nMajor\nSubject\nGrade\nAttendance");
         }
     }
 }
