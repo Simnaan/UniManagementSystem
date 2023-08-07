@@ -1,4 +1,4 @@
-﻿
+﻿using System;
 public class Rootobject
 {
     public Student[] students { get; set; }
@@ -35,4 +35,4 @@ public class Subject1
     public string name { get; set; }
     public int score { get; set; }
 }
-using System;
+
