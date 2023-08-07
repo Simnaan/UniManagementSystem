@@ -107,6 +107,23 @@ namespace UniManagementSystem
             //displays the name of all the students currently stored
             Console.WriteLine("\nWhat would you like to update for "+ NameOfStudent+"? \nPlease choose one of the following: ");
             Console.WriteLine("Name\nUniversity\nMajor\nSubject\nGrade\nAttendance");
+            string DataToUpdate = Console.ReadLine();
+
+
+            switch (DataToUpdate.ToLower())
+            {
+                case "name":
+                    Console.WriteLine("\nPlease enter the updated name");
+                    string NewName = Console.ReadLine();
+                    for (int i = 0; i < StudentsObject.students.Length; i++)
+                    {
+                        if (StudentsObject.students[i].name == NameOfStudent)
+                        {
+                            StudentsObject.students[i].name = NewName;
+                        }
+                    }
+                    break;
+            }
         }
     }
 }
