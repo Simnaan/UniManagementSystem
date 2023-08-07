@@ -67,27 +67,15 @@ namespace UniManagementSystem
                         Console.WriteLine("University: " + StudentsObject.students[i].university);
                         Console.WriteLine("Major: " + StudentsObject.students[i].major);
                         Console.WriteLine("Student ID: " + StudentsObject.students[i].student_id);
-                        //Each block of code here outputs one of the subjects of a student along with the results
-                        Console.WriteLine("Subject 1: " + StudentsObject.students[i].grades.subjects[0].name);
-                        Console.WriteLine("Score: " + StudentsObject.students[i].grades.subjects[0].score);
-                        Console.WriteLine("Attendance: " + StudentsObject.students[i].attendance.subjects[0].score);
 
-                        Console.WriteLine("Subject 2: " + StudentsObject.students[i].grades.subjects[1].name);
-                        Console.WriteLine("Score: " + StudentsObject.students[i].grades.subjects[1].score);
-                        Console.WriteLine("Attendance: " + StudentsObject.students[i].attendance.subjects[1].score);
+                        for (int x = 0; x < StudentsObject.students[i].grades.subjects.Length; x++)
+                        {
+                            Console.WriteLine("\nSubject: " + StudentsObject.students[i].grades.subjects[x].name);
+                            Console.WriteLine("Score: " + StudentsObject.students[i].grades.subjects[x].score);
+                            Console.WriteLine("Attendance: " + StudentsObject.students[i].attendance.subjects[x].score);
+                        }
 
-                        Console.WriteLine("Subject 3: " + StudentsObject.students[i].grades.subjects[2].name);
-                        Console.WriteLine("Score: " + StudentsObject.students[i].grades.subjects[2].score);
-                        Console.WriteLine("Attendance: " + StudentsObject.students[i].attendance.subjects[2].score);
-
-                        Console.WriteLine("Subject 4: " + StudentsObject.students[i].grades.subjects[3].name);
-                        Console.WriteLine("Score: " + StudentsObject.students[i].grades.subjects[3].score);
-                        Console.WriteLine("Attendance: " + StudentsObject.students[i].attendance.subjects[3].score);
-
-                        Console.WriteLine("Subject 5: " + StudentsObject.students[i].grades.subjects[4].name);
-                        Console.WriteLine("Score: " + StudentsObject.students[i].grades.subjects[4].score);
-                        Console.WriteLine("Attendance: " + StudentsObject.students[i].attendance.subjects[4].score);
-
+                        //outputs one of the subjects of a student along with the results
 
                         count--;
                     }
